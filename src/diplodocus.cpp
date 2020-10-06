@@ -79,11 +79,10 @@ int main(int argc, char *argv[]) {
 
 
 
-     diplo::srcDir = "../dataset/";
+    diplo::srcDir = "../dataset/";
 				
-				if (argc >= 2) diplo::file_q = argv[1];
-				if (argc == 3) diplo::file_p = argv[2];
-				
+    if (argc >= 2) diplo::file_q = argv[1];
+    if (argc == 3) diplo::file_p = argv[2];				
 				
     diplo::stopwatch_start();
     diplo::onlyPartition = true;
@@ -97,10 +96,12 @@ int main(int argc, char *argv[]) {
 
     queries::BTCprov q;
 
-		if (!diplo::file_q.empty()) { 
-			q.TPDemo();	
-			return 0;
-		}
+    if (!diplo::file_q.empty()) {
+      diplo::stopwatch_start();
+      q.TPDemo();
+      cout << "Query Time: " << diplo::stopwatch_get() << endl;
+      return 0;
+    }
 
 }
 
